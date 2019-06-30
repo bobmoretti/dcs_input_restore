@@ -16,12 +16,12 @@ names.
 Then run once with no arguments:
 
 ```
-dcs_input_restore.py
+python dcs_input_restore.py
 ```
 
 This will print out a list of files that will be renamed.  If you
 are happy with these actions, then re-run with the -x options:
 
 ```
-dcs_input_restore.py -x
+python dcs_input_restore.py -x
 ```
