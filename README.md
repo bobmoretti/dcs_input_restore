@@ -26,3 +26,5 @@ are happy with these actions, then re-run with the -x options:
 ```
 python dcs_input_restore.py -x
 ```
+
+**Reccomend you make a backup of your DCS input directory before running the above step.**
