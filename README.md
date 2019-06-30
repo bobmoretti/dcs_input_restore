@@ -9,7 +9,8 @@ and don't want to manually re-create all of your input profiles.
 Suggested use
 ------------------
 
-First run DCS on your new install. This will generate a
+Make sure your old input DCS saved games directory is still at `%USERPROFILE%\Saved Games\DCS`.
+Then run DCS on your new Windows install. This will generate a
 new dcs.log file that contains the new joystick device profile
 names. 
 
