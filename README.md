@@ -26,5 +26,10 @@ are happy with these actions, then re-run with the -x options:
 ```
 python dcs_input_restore.py -x
 ```
+If you're using **DCS** ***OpenBeta*** run the program with the -ob option:
+
+```
+python dcs_input_restore.py -x -ob
+```
 
 **Reccomend you make a backup of your DCS input directory before running the above step.**
