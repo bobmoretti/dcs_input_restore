@@ -138,7 +138,7 @@ def main(args):
     if args.dcs_dir is None:
         dcs_dir = find_dcs_dir(args.openbeta)
     if not os.path.exists(dcs_dir):
-        raise ValueError("DCS directory {} does not exist".format(dcs_dir))
+        raise ValueError("DCS directory {} does not exist. Are you using DCS OpenBeta? run again with the -ob flag".format(dcs_dir))
     if not os.path.exists(os.path.join(dcs_dir, 'Config')):
         raise ValueError("Directory {} does not seem to contain a DCS profile".format(dcs_dir))
 
@@ -170,7 +170,7 @@ Suggested use: First run DCS on your new install. This will generate a
 new dcs.log file that contains the new joystick device profile
 names. Then run once with no arguments, which will print out a list of
 files that will be renamed.  If you are happy with these actions, then
-re-run with the -x options. If you use DCS open beta run with the -ob option"""
+re-run with the -x options. If you use DCS OpenBeta run with the -ob option"""
 
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('--dcs_dir',
