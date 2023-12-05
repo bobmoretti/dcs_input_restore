@@ -4,6 +4,7 @@ from time import ctime
 import os
 import argparse
 from glob import glob
+import re
 
 
 def find_dcs_dir(openbeta):
@@ -106,6 +107,33 @@ def update_profiles_in(dirpath, new_devs, execute=False, quiet=False):
                     os.rename(old, new)
 
 
+def update_modifiers(dirname, new_devs, execute=False, quiet=False):
+    if not execute:
+        return
+
+    dirname = dirname[:-8]  # strip joystick from dirname, i.e go up a level.
+
+    for dev in new_devs:
+        try:
+            f = open(dirname + "modifiers.lua", "r+")
+        except FileNotFoundError:
+            continue
+
+        content = f.read()
+        # does a modifier with the exact same device and guid already
+        # exist? if so, don't mess with it.
+        if dev in content:
+            continue
+
+        name, guid = split_device_filename(dev)
+        if name in content:
+            updated_file = re.sub(name + "{.*?}", dev, content)
+            f.seek(0)
+            f.write(updated_file)
+            f.truncate()
+            f.close()
+
+
 def main(args):
     if args.dcs_dir is None:
         dcs_dir = find_dcs_dir(args.openbeta)
@@ -126,6 +154,10 @@ def main(args):
                            new_devs,
                            execute=args.execute,
                            quiet=args.quiet)
+        update_modifiers(dirname,
+                         new_devs,
+                         execute=args.execute,
+                         quiet=args.quiet)
 
 
 if __name__ == '__main__':
