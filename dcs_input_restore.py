@@ -39,6 +39,7 @@ def parse_dcs_log(dcs_dir):
             if INPUT_LOG_STR in line:
                 l = line[line.find("]") + 1:]
                 l = l[l.find("[") + 1: l.find("]")]
+                # Avoid appending empty strings to list. All devices should be longer than 3 chars as they include UID
                 if len(l) > 3:
                     dev_names.append(l)
 
